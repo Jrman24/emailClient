@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
   constructor(
     private matchPassWord: MatchPassword,
     private uniqueUserName: UniqueUsername
-  ) { }
+  ) { console.log(this.authForm); }
 
   ngOnInit(): void {
   }
