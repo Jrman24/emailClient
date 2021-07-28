@@ -5,3 +5,12 @@
 .form-group {
   margin-bottom: 1rem;
 }
+.form-control.error {
+  display: inline-block;
+  margin: 5px 0;
+  width: auto;
+  p{
+    margin: 0;
+    font-size: 13px;
+  }
+}

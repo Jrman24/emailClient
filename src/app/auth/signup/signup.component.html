@@ -1,24 +1,24 @@
 <h3>Create an Account</h3>
-<form [formGroup]="authForm">
-<!--  <div class="form-group">-->
-<!--    <label for="username">Username</label>-->
-<!--    <input id="username" class="form-control" formControlName="username">-->
-<!--  </div>-->
-  <app-input label="username" [control]="authForm.get('username')"></app-input>
-  {{authForm.get('username').errors | json}}
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input id="password" class="form-control" formControlName="password">
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+  <app-input label="username" inputType="text" [control]="authForm.get('username')"></app-input>
+  <app-input label="password" inputType="password" [control]="authForm.get('password')"></app-input>
+  <app-input label="password confirmation" inputType="password" [control]="authForm.get('passwordConfirmation')"></app-input>
+  <div class="form-control error is-invalid"
+       *ngIf="
+       authForm.errors
+       && authForm.get('password').touched
+       && authForm.get('passwordConfirmation').touched">
+      <p *ngIf="authForm.errors.passWordsDontMatch">
+        Password and  Password Confirmation must match
+      </p>
+    <p *ngIf="authForm.errors.noConnection">
+      No internet connection, failed to sign up.
+    </p>
+    <p *ngIf="authForm.errors.unknown">
+      Failed to sign up
+    </p>
   </div>
-  {{authForm.get('password').errors | json}}
-  <div class="form-group">
-    <label for="passwordConfirm">Password Confirmation</label>
-    <input id="passwordConfirm" class="form-control" formControlName="passwordConfirmation">
-  </div>
-  {{authForm.get('passwordConfirmation').errors | json}}
   <div class="submit">
     <button class="btn btn-primary">Submit</button>
   </div>
-
-  {{authForm.errors | json}}
 </form>
