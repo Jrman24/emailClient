@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.css';
 
+
+a{
+  text-decoration: none;
+  &.active {
+    text-decoration: underline;
+  }
+}
+
 /**Forms**/
 .form-group {
   margin-bottom: 1rem;
